@@ -1,4 +1,4 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { LitElement, html } from '@polymer/lit-element';
 import 'st-egeo-theme';
 /**
  * `st-modal`
@@ -8,11 +8,15 @@ import 'st-egeo-theme';
  * @polymer
  * @demo demo/index.html
  */
-class StModal extends PolymerElement {
-  static get template() {
+class StModal extends LitElement {
+  render() {
     return html`
       <style>
         :host {
+          display: none;
+        }
+
+        :host[opened] {
           display: block;
         }
 
@@ -35,7 +39,7 @@ class StModal extends PolymerElement {
       </style>
       
       <div class="st-modal">
-        <div class="st-modal__box">
+        <div id="" class="st-modal__box">
           <slot></slot>
         </div>
       </div>
@@ -49,6 +53,10 @@ class StModal extends PolymerElement {
         value: 'st-modal',
       },
     };
+  }
+
+  connectedCallback() {
+    
   }
 }
 
